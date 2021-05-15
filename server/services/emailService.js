@@ -20,7 +20,6 @@ const sendEmail = async ({from , to , subject, text ,html }) => {
         if(err) return false;
         else return true;
       });
-
 }
 
 module.exports = sendEmail;

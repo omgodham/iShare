@@ -37,7 +37,6 @@ router.post('/files', (req, res) => {
 
         await file.save().then((response) => {
             res.status(200).json({
-                response,
                 fileURL: `${process.env.APP_BASE_URL}/files/${response.uuid}`
             });
         });

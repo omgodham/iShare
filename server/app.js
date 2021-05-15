@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
 const mongoDB = require('./config/db');
+const cors = require('cors');
 const path = require('path');
-const { json } = require('express');
+
 app.set('views' , path.join(__dirname , '/views'));
 app.set('view engine' , 'ejs');
 //MongoDb connection
 mongoDB();
 
+//middlewares
+app.use(cors());
 app.use(express.json());
 
 //Router integrations
