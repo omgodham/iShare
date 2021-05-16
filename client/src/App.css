@@ -62,4 +62,5 @@ img{
 }
 .text span{
     color: #0288d1;
+    cursor: pointer;
 }

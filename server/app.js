@@ -3,6 +3,7 @@ const app = express();
 const mongoDB = require('./config/db');
 const cors = require('cors');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 app.set('views' , path.join(__dirname , '/views'));
 app.set('view engine' , 'ejs');
@@ -12,6 +13,7 @@ mongoDB();
 //middlewares
 app.use(cors());
 app.use(express.json());
+// app.use(express.urlencoded({limit: 104857600 , extended: true  }));
 
 //Router integrations
 app.use('/api',require("./routes/files"));

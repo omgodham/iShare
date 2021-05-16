@@ -15,14 +15,14 @@ let storage = multer.diskStorage({
 //2.Create upload method
 let upload = multer({
     storage,
-    limits: { fileSize: 10000 * 100 }, //max size allow 100mb 
+    limits: { fileSize: 1000000 * 100 }, //max size allow 100mb 
 }).single('myfile');
 
 router.post('/files', (req, res) => {
 
     upload(req, res, async (err) => {
         if (!req.file) {
-            return res.json({ error: "File not found", err });
+            return res.json({ error: "File not found or size is too big", err });
         }
         if (err) {
             return res.status(500).json({ error: err.message });
