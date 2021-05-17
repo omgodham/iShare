@@ -21,12 +21,28 @@ formData.append("myfile" , file);
         
 //  }
 
-return await fetch(`${API}/api/files` , {
-    method:"POST",
-    body: formData
-}).then(res => res.json())
-.catch(err => console.log(err));
+// return await fetch(`${API}/api/files` , {
+//     method:"POST",
+//     body: formData
+// }).then(res => {
+//     return res.json()
+// })
+// .catch(err => console.log(err));
 
+
+return axios.request({
+    method: "post", 
+    url: `${API}/api/files`, 
+    data: formData, 
+    onUploadProgress: (p) => {
+      console.log(Math.round((p.loaded / p.total)*100) + "%"); 
+    }
+}).then (res => {
+    return res;
+    //this.setState({
+      //fileprogress: 1.0,
+    //})
+})
 }
 
 const showFile = async () => {
