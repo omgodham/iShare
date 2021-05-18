@@ -49,11 +49,11 @@ router.post("/files/send", async (req, res) => {
   
     const file = await File.findOne({ uuid: uuid });
     if (!file) {
-        return res.status(422).json({ error: "file not found" });
+        return res.status(422).json({ error: "File Not Found" });
     }
 
     if(file.sender || file.receiver) {
-        return res.json({message : "File is already sent"});
+        return res.json({message : "File Is Already Sent"});
     }
 
    
